@@ -13,6 +13,7 @@
 
     --link: #017bf5;
     --link-hover: #02c3f8;
+    --link-darker: #020467;
     --fig-caption: #5fd700;
     --download-bg: darkblue;
 
@@ -22,12 +23,17 @@
     --header-bg: var(--black);
     --header-mobile: #ffffff;
     --nav-bg: var(--grey);
+
+    --outer-margin: 20px;
 }
 header, .menu-wrap, .logo-img, .menu-icon, nav, nav ul, nav ul li, nav ul li a, p, i, .fa-bars, body, #checkbox:checked ~ nav ul {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+}
+.active-subpage {
+    color: var(--lightgrey);
 }
 a {
     color: var(--link);
@@ -84,9 +90,6 @@ nav ul {
     overflow: hidden;
     transition: all 0.5s;
 }
-nav ul li {
-    padding: 0 15px;
-}
 nav ul li a {
     display: inline-block;
     padding: 12px;
@@ -98,6 +101,11 @@ nav ul li a {
 nav ul li a:hover, nav ul li a:focus {
     color: var(--red);
 }
+@media screen and (max-width: 799px) {
+    nav ul li {
+        padding: 0 15px;
+    }
+}
 #checkbox {
     display: none;
 }
@@ -106,7 +114,7 @@ nav ul li a:hover, nav ul li a:focus {
     padding: 15px 0;
     transition: all 0.5s;
 }
-@media (min-width: 768px) {
+@media (min-width: 800px) {
     .menu-icon {
         display: none;
     }
@@ -122,7 +130,6 @@ nav ul li a:hover, nav ul li a:focus {
     }
     nav ul li {
         display: inline-flex;
-        padding-left: 20px;
     }
 }
 h2, h3, h4, h5, h6 {
@@ -185,25 +192,28 @@ figure figcaption {
     border-radius: 1em;
 }
 .button {
-    width: 85%;
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 15px;
     text-align: center;
-    background-color: var(--darkblue);
-    color: var(--white);
-    border-radius: 1em;
-    transition: all .3s;
+    background-color: var(--blue);
+    color: var(--black);
+    border-radius: .7em;
+    transition: all .2s;
 }
 .button:hover {
-    background-color: var(--darker-blue);
+    background-color: var(--darkblue);
 }
 .button a {
-    color: var(--white)
+    color: var(--text-color);
+    font-weight: bold;
 }
  .button-a {
-    color: var(--white);
+    color: var(--text-color);
+    font-weight: bold;
 }
 .button-a:link { text-decoration: none; }
 .button-a:visited { text-decoration: none; }
@@ -216,11 +226,14 @@ figure figcaption {
     margin-top: 12px;
     color: var(--lightgrey);
 }
+.startpage-details {
+    margin-bottom: 15px;
+}
 summary {
     padding: 10px;
     background-color: var(--green);
     color: var(--black);
-    margin-bottom: 1em;
+    margin-top: 10px;
     margin-right: 20px;
     margin-left: 20px;
     cursor: pointer;
@@ -292,7 +305,6 @@ body p {
     margin-top: 20px;
 }
 .predigt-download {
-    width: fit-content;
     background-color: var(--download-bg);
     float: right;
     border-radius: .4em;
@@ -300,6 +312,10 @@ body p {
     text-align: center;
     margin-bottom: 20px;
     color: var(--link-hover);
+    transition: all .2s;
+}
+.predigt-download:hover {
+    background-color: var(--link-darker);
 }
 .predigt-container {
     margin-left: 10px;
@@ -318,7 +334,7 @@ body p {
 .top-left {
     font-size: 16px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
     html {
         font-size: 110%;
     }
@@ -326,13 +342,19 @@ body p {
         font-size: 20px;
     }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1080px) {
+    nav ul li {
+        padding: 0 15px;
+    }
     html {
         font-size: 120%
     }
     .top-left {
         font-size: 26px;
     }
+}
+nav ul {
+    white-space: nowrap;
 }
 @media screen and (min-width: 1200px) {
     html {
@@ -370,5 +392,55 @@ body p {
 @media screen and (max-width: 600px) {
     .pic-box {
         width: 100%
+    }
+}
+.content-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: var(--outer-margin);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+@media screen and (max-width: calc(400px + 2 * 20px)) {
+    .content-table {
+    min-width: 200px;
+    }
+}
+.content-table thead tr th:nth-child(2),
+.content-table tbody tr td:nth-child(2) {
+    padding-left: 250px;
+}
+.content-table thead tr {
+  background-color: var(--blue);
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--blue);
+}
+@media screen and (max-width: 1200px) {
+    .content-table thead tr th:nth-child(2),
+    .content-table tbody tr td:nth-child(2) {
+        padding-left: 150px;
+    }
+
+}
+@media screen and (max-width: 600px) {
+    .content-table thead tr th:nth-child(2),
+    .content-table tbody tr td:nth-child(2) {
+        padding-left: 50px;
     }
 }
